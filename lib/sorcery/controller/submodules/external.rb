@@ -145,7 +145,16 @@ module Sorcery
               end
 
               @user.save(:validate => false)
-              user_class.sorcery_config.authentications_class.create!({config.authentications_user_id_attribute_name => @user.id, config.provider_attribute_name => provider, config.provider_uid_attribute_name => @user_hash[:uid]})
+
+              user_class_attr = {config.authentications_user_id_attribute_name => @user.id,
+                                 config.provider_uid_attribute_name => @user_hash[:uid]}
+              user_class_attr[config.providers_class_email_attribute_name] = @user_hash[:user_info]["email"] if config.providers_class_require_email_on_save
+              if config.provider_attribute_is_key
+                user_class_attr[config.provider_attribute_name] = config.providers_class.where(config.providers_class_attribute_name => provider.capitalize).first.id
+              else
+                user_class_attr[config.provider_attribute_name] = provider
+              end
+              user_class.sorcery_config.authentications_class.create!(user_class_attr)
             end
             @user
           end

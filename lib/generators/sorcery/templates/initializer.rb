@@ -379,17 +379,40 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.authentications_user_id_attribute_name =
 
-
-    # Provider's identifier in authentications class.
-    # Default: `:provider`
-    #
-    # user.provider_attribute_name =
-
-
     # User's external unique identifier in authentications class.
     # Default: `:uid`
     #
     # user.provider_uid_attribute_name =
+
+
+    # Provider's identifier in authentications class.
+    # Default: `:provider` Make sure this ends with '_id' if provider_attribute_is_key = true
+    #
+    # user.provider_attribute_name =
+
+    # Provider's attribute name treated as a foreign key (integer)
+    # Default: `false`
+    #
+    # user.provider_attribute_is_key =
+
+    # Provider's class name (if provider_attribute_is_key = true)
+    # Default: `nil`
+    #
+    # user.providers_class = 
+
+    # Provider's class attribute for provider name (if provider_attribute_is_key = true)
+    # IMPORTANT!! We assume the name is capitalized in the table ("Facebook" not "facebook")
+    # Default: `:name`
+    #
+    # user.providers_class_attribute_name = 
+
+    # If you want your providers table to require an email, set to true
+    # and specify the attribute name
+    # Default: `false' and `:email`
+    #
+    # user.providers_class_require_email_on_save = 
+    # user.providers_class_email_attribute_name =
+
   end
 
   # This line must come after the 'user config' block.
