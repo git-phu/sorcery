@@ -55,7 +55,6 @@ module Sorcery
           # takes a provider and uid and finds a user by them.
           def load_from_provider(provider_name,uid)
             config = sorcery_config
-            debugger
             if not config.provider_attribute_is_key
               authentication = config.authentications_class.find_by_provider_and_uid(provider_name, uid)
             else
