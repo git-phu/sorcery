@@ -390,6 +390,11 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.provider_attribute_name =
 
+    # If we wish to save the oauth token in our Provider's table, specify the attr name for it
+    # Default: `nil`
+    #
+    # user.provider_attribute_access_token =
+
     # Provider's attribute name treated as a foreign key (integer)
     # Default: `false`
     #

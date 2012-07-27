@@ -22,19 +22,20 @@ module Sorcery
             attr_accessor :authentications_class,
                           :authentications_user_id_attribute_name,
                           :provider_attribute_name,
+                          :provider_attribute_access_token,
                           :provider_attribute_is_key,
                           :providers_class,
                           :providers_class_attribute_name,
                           :provider_uid_attribute_name,
                           :providers_class_require_email_on_save,
-                          :providers_class_email_attribute_name 
-
+                          :providers_class_email_attribute_name
           end
           
           base.sorcery_config.instance_eval do
             @defaults.merge!(:@authentications_class                  => nil,
                              :@authentications_user_id_attribute_name => :user_id,
                              :@provider_attribute_name                => :provider,
+                             :@provider_attribute_access_token        => nil,
                              :@provider_attribute_is_key              => :false,
                              :@providers_class                        => nil,
                              :@providers_class_attribute_name         => :name,
