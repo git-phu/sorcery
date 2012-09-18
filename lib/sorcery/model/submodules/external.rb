@@ -59,8 +59,8 @@ module Sorcery
             if not config.provider_attribute_is_key
               authentication = config.authentications_class.find_by_provider_and_uid(provider_name, uid)
             else
-              provider = config.providers_class.find_by_name(provider_name.capitalize)
-              authentication = config.authentications_class.where(config.provider_attribute_name => provider.id, config.provider_uid_attribute_name => uid).first if provider
+              provider = config.providers_class.const_get(provider_name.capitalize) if config.providers_class.const_defined? provider_name.capitalize
+              authentication = config.authentications_class.where(config.provider_attribute_name => provider.service_id, config.provider_uid_attribute_name => uid).first if provider
             end
              user = find(authentication.send(config.authentications_user_id_attribute_name)) if authentication
           end
