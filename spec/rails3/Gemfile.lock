@@ -1,5 +1,5 @@
 PATH
-  remote: ../../
+  remote: ../..
   specs:
     sorcery (0.7.13)
       bcrypt-ruby (~> 3.0.0)
@@ -78,7 +78,7 @@ GEM
       httpauth (~> 0.1)
       multi_json (~> 1.0)
     polyglot (0.3.3)
-    rack (1.2.5)
+    rack (1.2.8)
     rack-mount (0.6.14)
       rack (>= 1.0.0)
     rack-test (0.5.7)
